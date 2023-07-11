@@ -9,6 +9,8 @@ import {
 } from "./middlewares";
 import path from "path";
 import { Request, Response } from "express";
+import { User } from "./models/User";
+import { hashPassword, checkPassword } from "./service/hashProcess";
 
 export const app = express();
 
