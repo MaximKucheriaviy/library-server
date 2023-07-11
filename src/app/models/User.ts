@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { IUser } from "../../customTypes/user";
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<IUser>({
   name: {
     type: String,
     require: true,
@@ -17,9 +18,8 @@ const UserSchema = new Schema({
   token: String,
   premision: {
     type: String,
-    enum: ["admin", "user", , "achitector"],
   },
 });
 
-export const User = model("User", UserSchema);
+export const User = model<IUser>("Users", UserSchema);
 console.log(User);
