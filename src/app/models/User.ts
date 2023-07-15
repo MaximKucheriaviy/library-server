@@ -22,4 +22,3 @@ const UserSchema = new Schema<IUser>({
 });
 
 export const User = model<IUser>("Users", UserSchema);
-console.log(User);

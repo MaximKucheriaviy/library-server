@@ -2,6 +2,7 @@ import { app } from "./app/app";
 import IDotenv from "./customTypes/dotenv";
 import mongoose from "mongoose";
 const dotenv = require("dotenv").config() as IDotenv;
+import { checkJWT, createJWT } from "./app/service/JWT";
 
 console.log("Starting app");
 
@@ -15,3 +16,6 @@ if (typeof dotenv.parsed.MDB_CONNECTION === "string") {
     console.log("Database connected");
   });
 }
+
+// const token = createJWT("JesusCrist");
+// console.log(token);
