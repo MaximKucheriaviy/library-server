@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { AuthRequest } from "../../customTypes/user";
 import { JWTStatus, checkJWT } from "../service/JWT";
 import { createAppError } from "../../customTypes/error";
@@ -8,6 +8,7 @@ export const refreshAuth = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { refresh } = req.body;
   const token = req.headers.authorization;
   if (!token) {
     return createAppError({ status: 403, message: "Unathorised" });
@@ -21,7 +22,7 @@ export const refreshAuth = async (
   if (!userData) {
     return createAppError({ status: 403, message: "JWT: wrong ID" });
   }
-  if (token !== userData.refreshToken) {
+  if (token !== (refresh ? userData.refreshToken : userData.token)) {
     return createAppError({ status: 403, message: "JWT: wrong JWT" });
   }
   req._id = userData._id;
