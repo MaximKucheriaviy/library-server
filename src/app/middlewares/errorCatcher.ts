@@ -5,8 +5,7 @@ import { createResponseData } from "../../customTypes/responseData";
 export const errorCatcher = function (
   error: AppError | Error,
   req: Request,
-  res: Response,
-  next: Function
+  res: Response
 ) {
   if ("status" in error) {
     res.json(createResponseData(error.message)).status(error.status);

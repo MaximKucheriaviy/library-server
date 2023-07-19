@@ -1,3 +1,3 @@
 import { createUser } from "./createUser";
-
-export { createUser };
+import { updateUserToken } from "./updateUserToken";
+export { createUser, updateUserToken };

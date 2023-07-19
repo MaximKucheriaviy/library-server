@@ -2,10 +2,11 @@ import { ObjectId, now } from "mongoose";
 import * as JWT from "jsonwebtoken";
 import IDotenv from "../../customTypes/dotenv";
 import { token } from "morgan";
+import mongouse from "mongoose";
 const dotenv = require("dotenv").config() as IDotenv;
 
 export const createJWT = (
-  id: ObjectId | string,
+  id: mongouse.Types.ObjectId,
   liefeTime: number = 1
 ): string => {
   const expiresIn: number = Math.floor(60 * liefeTime);
@@ -22,9 +23,14 @@ enum JWTStatus {
   failed,
 }
 
-export const checkJWT = (token: string): JWTStatus | JWT.JwtPayload => {
+export const checkJWT = (
+  token: string,
+  timing: boolean = false
+): JWTStatus | JWT.JwtPayload => {
   try {
-    const res = JWT.verify(token, dotenv.parsed.SECRET_WORD as string);
+    const res = JWT.verify(token, dotenv.parsed.SECRET_WORD as string, {
+      ignoreExpiration: timing,
+    });
     return res as JWT.JwtPayload;
   } catch (err) {
     if (err instanceof JWT.TokenExpiredError) {

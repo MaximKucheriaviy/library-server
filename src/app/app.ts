@@ -8,7 +8,7 @@ import {
   errorCatcher,
 } from "./middlewares";
 import path from "path";
-import { createUserController } from "./controllers/userControllers/createUser";
+import { createUserController } from "./controllers/userControllers";
 
 export const app = express();
 

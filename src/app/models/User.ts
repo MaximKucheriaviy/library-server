@@ -16,6 +16,7 @@ const UserSchema = new Schema<IUser>({
     required: true,
   },
   token: String,
+  refreshToken: String,
   premision: {
     type: String,
   },
