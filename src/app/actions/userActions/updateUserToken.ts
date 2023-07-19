@@ -13,7 +13,7 @@ export const updateUserToken = async (
       id,
       {
         token: createJWT(id),
-        refreshToken: createJWT(id),
+        refreshToken: createJWT(id, 60),
       },
       { returnOriginal: false }
     );

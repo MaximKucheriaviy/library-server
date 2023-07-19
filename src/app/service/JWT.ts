@@ -17,25 +17,36 @@ export const createJWT = (
   return token;
 };
 
-enum JWTStatus {
+export enum JWTStatus {
   pased,
   timeout,
   failed,
 }
 
+interface CheckJWTPayload extends JWT.JwtPayload {
+  _id: mongouse.Types.ObjectId;
+}
+
+interface CheckJWTResponse {
+  status: JWTStatus;
+  payload?: CheckJWTPayload;
+}
+
 export const checkJWT = (
   token: string,
-  timing: boolean = false
-): JWTStatus | JWT.JwtPayload => {
+  timing: boolean = true
+): CheckJWTResponse => {
   try {
     const res = JWT.verify(token, dotenv.parsed.SECRET_WORD as string, {
-      ignoreExpiration: timing,
+      ignoreExpiration: !timing,
     });
-    return res as JWT.JwtPayload;
+    return {
+      status: JWTStatus.pased,
+      payload: res as CheckJWTPayload,
+    };
   } catch (err) {
-    if (err instanceof JWT.TokenExpiredError) {
-      return JWTStatus.failed;
-    }
-    throw err;
+    return {
+      status: JWTStatus.failed,
+    };
   }
 };
