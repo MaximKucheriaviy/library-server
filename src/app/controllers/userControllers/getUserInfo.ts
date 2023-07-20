@@ -1,10 +1,12 @@
 import { Response } from "express";
-import { AuthRequest } from "../../../customTypes/user";
+import { AuthRequest, IUser } from "../../../customTypes/user";
 import { getUserInfo } from "../../actions/userActions";
 import { createResponseData } from "../../../customTypes/responseData";
 
 export const getUserInfoControler = async (req: AuthRequest, res: Response) => {
-  const id = req._id;
-  const userData = await getUserInfo(id);
-  res.json(createResponseData("User finded", userData));
+  const id = req.params.id;
+  const { name, email, premision } = await getUserInfo(id);
+  res
+    .json(createResponseData("User finded", { name, email, premision }))
+    .status(200);
 };

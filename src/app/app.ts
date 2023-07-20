@@ -28,14 +28,10 @@ app.use(express.static(publickPath));
 app.post("/api/user/", controllerWraper(createUserController));
 app.get(
   "/api/refreshToken/",
-  controllerWraper(refreshAuth as Application),
+  controllerWraper(refreshAuth(true) as Application),
   controllerWraper(updateUserTokenController as Application)
 );
-app.get(
-  "/api/user/",
-  controllerWraper(refreshAuth as Application),
-  controllerWraper(getUserInfoControler as Application)
-);
+app.get("/api/user/:id", controllerWraper(getUserInfoControler as Application));
 app.post("/api/user/signup", controllerWraper(signInUserController));
 app.use("/", controllerWraper(defaultError));
 app.use(errorCatcher);

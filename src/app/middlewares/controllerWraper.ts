@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { AuthRequest } from "../../customTypes/user";
+import { Application } from "express";
 // import { AppError } from "../../customTypes/error";
 
 export const controllerWraper = function (

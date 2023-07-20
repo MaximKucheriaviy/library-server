@@ -4,7 +4,7 @@ import { createAppError } from "../../../customTypes/error";
 import { IUser } from "../../../customTypes/user";
 
 export const getUserInfo = async (
-  id: mongoose.Types.ObjectId
+  id: mongoose.Types.ObjectId | string
 ): Promise<HydratedDocument<IUser>> => {
   try {
     const userData = await User.findById(id);
