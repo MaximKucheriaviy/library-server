@@ -9,7 +9,7 @@ export const errorCatcher = function (
   next: NextFunction
 ) {
   if ("status" in error) {
-    res.json(createResponseData(error.message)).status(error.status);
+    res.status(error.status).json(createResponseData(error.message));
   } else {
     res.json(createResponseData("Server error")).status(500);
     console.log(error);

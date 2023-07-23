@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express from "express";
 const cors = require("cors");
 import {
   morganLogger,
@@ -9,12 +9,7 @@ import {
   refreshAuth,
 } from "./middlewares";
 import path from "path";
-import {
-  createUserController,
-  updateUserTokenController,
-  signInUserController,
-  getUserInfoControler,
-} from "./controllers/userControllers";
+import { userRouter } from "./routers";
 
 export const app = express();
 
@@ -24,14 +19,6 @@ app.use(cors());
 app.use(express.json());
 app.use(morganLogger(morganSetup));
 app.use(express.static(publickPath));
-
-app.post("/api/user/", controllerWraper(createUserController));
-app.get(
-  "/api/refreshToken/",
-  controllerWraper(refreshAuth(true) as Application),
-  controllerWraper(updateUserTokenController as Application)
-);
-app.get("/api/user/:id", controllerWraper(getUserInfoControler as Application));
-app.post("/api/user/signup", controllerWraper(signInUserController));
+app.use("/api/user/", userRouter);
 app.use("/", controllerWraper(defaultError));
 app.use(errorCatcher);

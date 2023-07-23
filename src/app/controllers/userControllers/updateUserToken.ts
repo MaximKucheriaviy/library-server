@@ -9,7 +9,7 @@ export const updateUserTokenController = async (
 ) => {
   const id = req._id;
   const result = await updateUserToken(id);
-  res.json(
+  res.status(201).json(
     createResponseData("Tokens updated", {
       token: result.token,
       refreshToken: result.refreshToken,

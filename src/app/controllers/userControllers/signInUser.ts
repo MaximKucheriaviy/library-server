@@ -14,5 +14,5 @@ export const signInUserController = async (req: Request, res: Response) => {
     createAppError({ status: 401, message: "Wrong body" });
   }
   const user = await signInUser(email, password);
-  res.json(createResponseData("User signedUp", user)).status(201);
+  res.status(201).json(createResponseData("User signedUp", user));
 };
