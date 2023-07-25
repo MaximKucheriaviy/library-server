@@ -9,7 +9,7 @@ import {
   refreshAuth,
 } from "./middlewares";
 import path from "path";
-import { userRouter } from "./routers";
+import { userRouter, bookRouter } from "./routers";
 
 export const app = express();
 
@@ -20,5 +20,6 @@ app.use(express.json());
 app.use(morganLogger(morganSetup));
 app.use(express.static(publickPath));
 app.use("/api/user/", userRouter);
+app.use("/api/books/", bookRouter);
 app.use("/", controllerWraper(defaultError));
 app.use(errorCatcher);

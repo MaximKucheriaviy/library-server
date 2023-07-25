@@ -1,7 +1,7 @@
 import multer from "multer";
 import { join, resolve } from "path";
 
-const tempPath = resolve(__dirname, "../../temp");
+const tempPath = resolve(__dirname, "../../../temp");
 
 const storge = multer.diskStorage({
   destination: (req, file, cb) => {

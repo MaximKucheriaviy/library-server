@@ -1,2 +1,3 @@
 import { userRouter } from "./userRouter";
-export { userRouter };
+import { bookRouter } from "./bookRouter";
+export { userRouter, bookRouter };

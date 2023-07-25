@@ -7,7 +7,7 @@ export interface IUser {
   password: string;
   token?: string;
   refreshToken?: string;
-  premision: "admin" | "user" | "achitector";
+  premision: "admin" | "user" | "architector";
 }
 
 export interface AuthRequest extends Request {

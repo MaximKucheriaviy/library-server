@@ -14,10 +14,10 @@ const BookSchema = new Schema<IBook>({
     type: Number,
     require: true,
   },
-  picture: {
+  description: {
     type: String,
   },
-  description: new Schema({
+  picture: new Schema({
     url: {
       type: String,
       require: true,

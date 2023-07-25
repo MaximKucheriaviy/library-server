@@ -7,7 +7,7 @@ const dotenv = require("dotenv").config() as IDotenv;
 
 export const createJWT = (
   id: mongouse.Types.ObjectId,
-  liefeTime: number = 1
+  liefeTime: number = 5
 ): string => {
   const expiresIn: number = Math.floor(60 * liefeTime);
   const iat: number = Math.floor(Date.now() / 1000);
