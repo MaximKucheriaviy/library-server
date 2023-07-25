@@ -7,13 +7,13 @@ export const controllerWraper = function (
   callback: (
     req: Request | AuthRequest,
     res: Response,
-    next?: Function
+    next?: NextFunction
   ) => Promise<any>
 ): (req: Request, res: Response, next: NextFunction) => Promise<any> {
   const result = async (
     req: Request | AuthRequest,
     res: Response,
-    next: Function
+    next: NextFunction
   ): Promise<any> => {
     try {
       await callback(req, res, next);

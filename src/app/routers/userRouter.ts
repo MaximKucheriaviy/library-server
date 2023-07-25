@@ -5,6 +5,7 @@ import {
   updateUserTokenController,
   getUserInfoControler,
   signInUserController,
+  getUserInfoByTokenControler,
 } from "../controllers/userControllers";
 import { Application } from "express";
 
@@ -14,6 +15,11 @@ userRouter.get(
   "/refreshToken",
   controllerWraper(refreshAuth(true) as Application),
   controllerWraper(updateUserTokenController as Application)
+);
+userRouter.get(
+  "/userInfo",
+  controllerWraper(refreshAuth() as Application),
+  controllerWraper(getUserInfoByTokenControler as Application)
 );
 userRouter.get("/:id", controllerWraper(getUserInfoControler as Application));
 userRouter.post("/signup", controllerWraper(signInUserController));
