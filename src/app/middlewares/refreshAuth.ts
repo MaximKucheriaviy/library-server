@@ -10,6 +10,7 @@ export const refreshAuth = (
 ) => {
   return async (req: AuthRequest, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
+
     if (!token) {
       return createAppError({ status: 403, message: "Unathorised" });
     }
