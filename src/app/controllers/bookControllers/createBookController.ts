@@ -20,7 +20,6 @@ export const createBookController = async (req: AuthRequest, res: Response) => {
 
   sendData.ganre = JSON.parse(data.ganre);
   sendData.keyWords = JSON.parse(data.keyWords);
-  console.log(sendData);
   const result = await Book.create(sendData);
   res.status(201).json(createResponseData("Book created", result));
 };
