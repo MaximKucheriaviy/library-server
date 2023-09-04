@@ -11,8 +11,7 @@ export const getAllBooks = async (
     if (!keyword) {
       data = await Book.find();
     } else {
-      data = await Book.find({ name: keyword });
-      console.log(keyword);
+      data = await Book.find({ name: { $regex: keyword } });
     }
     if (!data) {
       return createAppError({ message: "Book found error", status: 404 });
