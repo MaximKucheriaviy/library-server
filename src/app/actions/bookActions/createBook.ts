@@ -7,6 +7,9 @@ export const createBook = async (
   data: IBook
 ): Promise<HydratedDocument<IBook>> => {
   try {
+    console.log(data);
+    console.log("there");
+
     const result = Book.create(data);
     if (!result) {
       return createAppError({ message: "Book creation error", status: 400 });
