@@ -8,6 +8,7 @@ export interface IUser {
   token?: string;
   refreshToken?: string;
   premision: "admin" | "user" | "architector";
+  books: Array<Types.ObjectId>;
 }
 
 export interface AuthRequest extends Request {

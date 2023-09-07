@@ -6,6 +6,7 @@ import {
   getUserInfoControler,
   signInUserController,
   getUserInfoByTokenControler,
+  asignBookToUserController,
 } from "../controllers/userControllers";
 import { Application } from "express";
 
@@ -23,3 +24,4 @@ userRouter.get(
 );
 userRouter.get("/:id", controllerWraper(getUserInfoControler as Application));
 userRouter.post("/signup", controllerWraper(signInUserController));
+userRouter.put("/:id", asignBookToUserController);

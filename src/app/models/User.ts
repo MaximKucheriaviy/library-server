@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import { IUser } from "../../customTypes/user";
 
 const UserSchema = new Schema<IUser>({
@@ -20,6 +20,7 @@ const UserSchema = new Schema<IUser>({
   premision: {
     type: String,
   },
+  books: [Types.ObjectId],
 });
 
 export const User = model<IUser>("Users", UserSchema);

@@ -3,6 +3,7 @@ import { updateUserTokenController } from "./updateUserToken";
 import { signInUserController } from "./signInUser";
 import { getUserInfoControler } from "./getUserInfo";
 import { getUserInfoByTokenControler } from "./getUserInfoByToken";
+import { asignBookToUserController } from "./asignBookToUserController";
 
 export {
   createUserController,
@@ -10,4 +11,5 @@ export {
   signInUserController,
   getUserInfoControler,
   getUserInfoByTokenControler,
+  asignBookToUserController,
 };
