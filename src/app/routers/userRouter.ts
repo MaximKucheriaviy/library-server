@@ -24,4 +24,7 @@ userRouter.get(
 );
 userRouter.get("/:id", controllerWraper(getUserInfoControler as Application));
 userRouter.post("/signup", controllerWraper(signInUserController));
-userRouter.put("/:id", asignBookToUserController);
+userRouter.put(
+  "/:id",
+  controllerWraper(asignBookToUserController as Application)
+);

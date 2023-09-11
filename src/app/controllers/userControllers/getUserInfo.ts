@@ -5,8 +5,6 @@ import { createResponseData } from "../../../customTypes/responseData";
 
 export const getUserInfoControler = async (req: AuthRequest, res: Response) => {
   const id = req.params.id;
-  const { name, email, premision } = await getUserInfo(id);
-  res
-    .status(200)
-    .json(createResponseData("User finded", { name, email, premision }));
+  const data = await getUserInfo(id);
+  res.status(200).json(createResponseData("User finded", data));
 };

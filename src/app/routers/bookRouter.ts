@@ -13,5 +13,5 @@ bookRouter
     uploader.single("picture"),
     controllerWraper(createBookController as Application)
   )
-  .get("/", getAllBooksController)
-  .get("/:id", getBookByIdController);
+  .get("/", controllerWraper(getAllBooksController))
+  .get("/:id", controllerWraper(getBookByIdController as Application));
